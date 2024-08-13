@@ -1,0 +1,22 @@
+{
+  "name": "mysubgraph",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": " graph build",
+    "create-local": "graph create --node http://127.0.0.1:8020/ mysubgraph",
+    "remove-local": "graph remove --node http://127.0.0.1:8020/ mysubgraph",
+    "deploy-local": "graph deploy --node http://127.0.0.1:8020/ --ipsf http://127.0.0.1:5001 mysubgraph",
+    "test": "graph test",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ dapplinksubgraph",
+    "meda": "yarn remove-local && yarn create-local && yarn deploy-local"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.80.0",
+    "@graphprotocol/graph-ts": "^0.35.1"
+  }
+}

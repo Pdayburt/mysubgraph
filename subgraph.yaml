@@ -1,0 +1,37 @@
+dataSources:
+  - kind: ethereum
+    mapping:
+      abis:
+        - file: ./abis/TreasureManager.json
+          name: TreasureManager
+      apiVersion: 0.0.7
+      entities:
+        - DepositToken
+        - WithdrawToken
+        - GrantRewardTokenAmount
+        - WithdrawManagerUpdate
+      eventHandlers:
+        - event: DepositToken(indexed address,indexed address,uint256)
+          handler: handlerDepositToken
+          receipt: true
+        - event: WithdrawToken(indexed address,address,address,uint256)
+          handler: handlerWithdrawToken
+          receipt: true
+        - event: GrantRewardTokenAmount(indexed address,address,uint256)
+          handler: handlerGrantRewardTokenAmount
+          receipt: true
+        - event: WithdrawManagerUpdate(indexed address)
+          handler: handlerWithdrawManagerUpdate
+          receipt: true
+      file: ./src/mysubgraph.ts
+      kind: ethereum/events
+      language: wasm/assemblyscript
+    name: TreasureManager
+    network: mainnet
+    source:
+      abi: TreasureManager
+      address: '0x82e01223d51Eb87e16A03E24687EDF0F294da6f1'
+      startBlock: 0
+schema:
+  file: ./schema.graphql
+specVersion: 0.0.4
